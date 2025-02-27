@@ -1,0 +1,64 @@
+<!-- /* SIGNUP HTML*/  -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Page</title>
+    <link rel="stylesheet" href="signup.css">
+    <script>
+    function validateForm(event) {
+        event.preventDefault(); 
+        let password = document.getElementById("password").value;
+        let confirmPassword = document.getElementById("confirmPassword").value;
+
+        if (password !== confirmPassword) {
+            alert("Passwords do not match! Please re-enter your details.");
+            return false;
+        }
+
+        alert("Signup Successful! Redirecting...");
+        window.location.href = "Homepage.html"; // Redirect to welcome page
+        return true;
+    }
+
+    function togglePassword(id) {
+        let field = document.getElementById(id);
+        field.type = field.type === "password" ? "text" : "password";
+    }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2>Signup</h2>
+        <form id="signupForm" onsubmit="return validateForm(event)">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" required>
+
+            <label for="regNo">Registration Number:</label>
+            <input type="text" id="regNo" required>
+
+            <label for="username">Username:</label>
+            <input type="text" id="username" required>
+
+            <label for="password">Create Password:</label>
+            <div class="password-container">
+                <input type="password" id="password" required>
+                <button type="button" onclick="togglePassword('password')">Show</button>
+            </div>
+
+            <label for="confirmPassword">Confirm Password:</label>
+            <div class="password-container">
+                <input type="password" id="confirmPassword" required>
+                <button type="button" onclick="togglePassword('confirmPassword')">Show</button>
+            </div>
+
+            <div class="link">
+                <a href="login.html">Already have an account? Login</a>
+            </div>    
+            <button type="submit">Sign Up</button>
+        </form>
+    </div>
+</body>
+</html>
