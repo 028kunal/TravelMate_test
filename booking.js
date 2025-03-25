@@ -188,4 +188,203 @@ const categories = {
     departureDate.setAttribute("min", today);
     updateBudgetValue();
   });
-  
+ 
+
+
+// INTERACTIVE MAP 
+
+
+
+// document.addEventListener("DOMContentLoaded", function () {
+//   var map = L.map('map').setView([20.5937, 78.9629], 5);
+
+//   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+//       attribution: '&copy; OpenStreetMap contributors'
+//   }).addTo(map);
+
+//   // Predefined coordinates for locations
+//   const locationCoordinates = {
+//       "Manali": [32.2396, 77.1887],
+//       "Shimla": [31.1048, 77.1734],
+//       "Ooty": [11.4064, 76.6932],
+//       "Varanasi": [25.3176, 82.9739],
+//       "Rishikesh": [30.0869, 78.2676],
+//       "Kedarnath": [30.7346, 79.0669],
+//       "Goa": [15.2993, 74.1240],
+//       "Kovalam": [8.4000, 76.9784],
+//       "Andaman": [11.7401, 92.6586],
+//       "Hampi": [15.3350, 76.4600],
+//       "Khajuraho": [24.8318, 79.9199],
+//       "Jaipur": [26.9124, 75.7873],
+//       "Spiti Valley": [32.2465, 78.0170],
+//       "Pawna Lake": [18.6500, 73.4723],
+//       "Roopkund": [30.2565, 79.7304],
+//       "Kedarkantha": [31.0244, 78.1958],
+//       "Hampta Pass": [32.2737, 77.3516],
+//       "Gulmarg": [34.0484, 74.3805],
+//       "Auli": [30.5285, 79.5656],
+//       "Sundarbans": [22.0176, 88.8263],
+//       "Jim Corbett": [29.5300, 78.7740],
+//       "Bandipur": [11.6542, 76.6476]
+//   };
+
+//   // Store markers in an array
+//   var markers = {};
+
+//   // Function to update map based on selected location
+//   function updateMap(location) {
+//       if (location && locationCoordinates[location]) {
+//           const coords = locationCoordinates[location];
+
+//           // Zoom in more when selecting a location
+//           map.setView(coords, 13);
+
+//           // Remove old marker if exists
+//           if (markers[location]) {
+//               map.removeLayer(markers[location]);
+//           }
+
+//           // Add new marker with more details
+//           const marker = L.marker(coords).addTo(map)
+//               .bindPopup(`<b>${location}</b><br>Coordinates: ${coords[0]}, ${coords[1]}`)
+//               .openPopup();
+          
+//           markers[location] = marker;
+//       }
+//   }
+
+//   // Event listener for location selection
+//   document.getElementById("location-select").addEventListener("change", function () {
+//       updateMap(this.value);
+//   });
+
+//   // Optional: Add markers for all locations at the start
+//   for (let place in locationCoordinates) {
+//       let coords = locationCoordinates[place];
+//       let marker = L.marker(coords).addTo(map)
+//           .bindPopup(`<b>${place}</b><br>Coordinates: ${coords[0]}, ${coords[1]}`);
+//       markers[place] = marker;
+//   }
+// });
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  // Initialize the map
+  var map = L.map('map').setView([20.5937, 78.9629], 5);
+
+  // Base layers (Normal + Satellite)
+  var normalLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+  });
+
+  var satelliteLayer = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap contributors, Tiles courtesy of HOT'
+  });
+
+  // Add the normal map as default
+  normalLayer.addTo(map);
+
+  // Predefined coordinates for locations
+  const locationCoordinates = {
+      "Manali": [32.2396, 77.1887],
+      "Shimla": [31.1048, 77.1734],
+      "Ooty": [11.4064, 76.6932],
+      "Varanasi": [25.3176, 82.9739],
+      "Rishikesh": [30.0869, 78.2676],
+      "Kedarnath": [30.7346, 79.0669],
+      "Goa": [15.2993, 74.1240],
+      "Kovalam": [8.4000, 76.9784],
+      "Andaman": [11.7401, 92.6586],
+      "Hampi": [15.3350, 76.4600],
+      "Khajuraho": [24.8318, 79.9199],
+      "Jaipur": [26.9124, 75.7873],
+      "Spiti Valley": [32.2465, 78.0170],
+      "Pawna Lake": [18.6500, 73.4723],
+      "Roopkund": [30.2565, 79.7304],
+      "Kedarkantha": [31.0244, 78.1958],
+      "Hampta Pass": [32.2737, 77.3516],
+      "Gulmarg": [34.0484, 74.3805],
+      "Auli": [30.5285, 79.5656],
+      "Sundarbans": [22.0176, 88.8263],
+      "Jim Corbett": [29.5300, 78.7740],
+      "Bandipur": [11.6542, 76.6476]
+  };
+
+  // Markers
+  var markers = {};
+
+  // Function to update map when location is selected
+  function updateMap(location) {
+      if (location && locationCoordinates[location]) {
+          const coords = locationCoordinates[location];
+
+          // Zoom in more when selecting a location
+          map.setView(coords, 14);
+
+          // Remove old marker if exists
+          if (markers[location]) {
+              map.removeLayer(markers[location]);
+          }
+
+          // Add new marker
+          const marker = L.marker(coords).addTo(map)
+              .bindPopup(`<b>${location}</b><br>Coordinates: ${coords[0]}, ${coords[1]}`)
+              .openPopup();
+          
+          markers[location] = marker;
+      }
+  }
+
+  // Event listener for location selection
+  document.getElementById("location-select").addEventListener("change", function () {
+      updateMap(this.value);
+  });
+
+  // Add markers for all locations at the start
+  for (let place in locationCoordinates) {
+      let coords = locationCoordinates[place];
+      let marker = L.marker(coords).addTo(map)
+          .bindPopup(`<b>${place}</b><br>Coordinates: ${coords[0]}, ${coords[1]}`);
+      markers[place] = marker;
+  }
+
+  // POI Markers for hospitals, restaurants, metro stations, medical shops
+  var hospitals = L.layerGroup([
+      L.marker([28.6139, 77.2090]).bindPopup("<b>Hospital</b><br>Delhi"),
+      L.marker([19.0760, 72.8777]).bindPopup("<b>Hospital</b><br>Mumbai"),
+      L.marker([12.9716, 77.5946]).bindPopup("<b>Hospital</b><br>Bangalore")
+  ]);
+
+  var restaurants = L.layerGroup([
+      L.marker([28.7041, 77.1025]).bindPopup("<b>Restaurant</b><br>Delhi"),
+      L.marker([19.0760, 72.8777]).bindPopup("<b>Restaurant</b><br>Mumbai"),
+      L.marker([12.9716, 77.5946]).bindPopup("<b>Restaurant</b><br>Bangalore")
+  ]);
+
+  var metroStations = L.layerGroup([
+      L.marker([28.6353, 77.2250]).bindPopup("<b>Metro Station</b><br>Connaught Place, Delhi"),
+      L.marker([19.0760, 72.8777]).bindPopup("<b>Metro Station</b><br>Andheri, Mumbai"),
+      L.marker([12.9716, 77.5946]).bindPopup("<b>Metro Station</b><br>MG Road, Bangalore")
+  ]);
+
+  var medicalShops = L.layerGroup([
+      L.marker([28.7041, 77.1025]).bindPopup("<b>Medical Shop</b><br>Delhi"),
+      L.marker([19.0760, 72.8777]).bindPopup("<b>Medical Shop</b><br>Mumbai"),
+      L.marker([12.9716, 77.5946]).bindPopup("<b>Medical Shop</b><br>Bangalore")
+  ]);
+
+  // Add layers control to toggle between views
+  L.control.layers(
+      {
+          "Normal Map": normalLayer,
+          "Satellite Map": satelliteLayer
+      },
+      {
+          "Hospitals": hospitals,
+          "Restaurants": restaurants,
+          "Metro Stations": metroStations,
+          "Medical Shops": medicalShops
+      }
+  ).addTo(map);
+});

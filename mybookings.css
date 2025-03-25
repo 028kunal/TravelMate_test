@@ -1,88 +1,102 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background: #f5f5f5;
-  }
-  
-  .navbar {
-    background-color: #007bff;
-    color: white;
-    padding: 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .navbar h1 {
-    margin: 0;
-  }
-  
-  .back-btn {
-    background-color: white;
-    color: #007bff;
-    padding: 8px 16px;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: bold;
-  }
-  
-  .filters {
-    display: flex;
-    gap: 15px;
-    padding: 1rem 1.5rem;
-    background: #fff;
-    align-items: center;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-  }
-  
-  .filters select,
-  .filters input[type="text"],
-  .filters input[type="date"],
-  .filters button {
-    font-size: 1rem;
-    padding: 10px 14px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-  }
-  
-  .filters button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.2s ease-in-out;
-  }
-  
-  .filters button:hover {
-    background-color: #0056b3;
-  }
-  
-  .bookings-container {
-    padding: 1rem;
-  }
-  
-  .booking-card {
-    background-color: white;
-    padding: 1rem;
-    margin-bottom: 1rem;
-    border-radius: 8px;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .booking-card p {
-    margin: 0.4rem 0;
-  }
-  
-  .delete-btn {
-    background-color: red;
-    color: white;
-    padding: 6px 12px;
-    border: none;
-    border-radius: 4px;
-    margin-top: 10px;
-    cursor: pointer;
-  }
-  
+ body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+}
+
+.navbar {
+  background: rgba(0, 0,0,0.9);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.navbar h1 {
+  font-size: 2rem;
+  color: #ffdf6c;
+}
+
+.back-btn {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+  background-color: #ffdf6c;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+.back-btn:hover {
+  background-color: #ffe792;
+  color: #000;
+}
+
+.filters {
+  display: flex;
+  gap: 15px;
+  padding: 1rem 1.5rem;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 0 0 10px 10px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+.filters select,
+.filters input[type="text"],
+.filters input[type="date"],
+.filters button {
+  font-size: 1rem;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.filters button {
+  background-color: #ffdf6c;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.filters button:hover {
+  background-color: #ffe792;
+}
+
+.bookings-container {
+  padding: 1rem;
+}
+
+.booking-card {
+  background: rgba(0, 0, 0, 0.7);
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+.booking-card p {
+  margin: 0.4rem 0;
+  color: #ffdf6c;
+}
+
+.delete-btn {
+  background-color: red;
+  color: white;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  margin-top: 10px;
+  cursor: pointer;
+}
