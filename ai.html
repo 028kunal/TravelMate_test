@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Trip Planner</title>
+    <link rel="stylesheet" href="ai.css">
+</head>
+<body>
+    <div class="container">
+        <h1>AI Trip Planner</h1>
+        <div class="input-section">
+            <label for="place">Destination:</label>
+            <input type="text" id="place" placeholder="Enter your destination">
+
+            <label for="days">Number of Days:</label>
+            <input type="number" id="days" placeholder="Enter number of days">
+
+            <button onclick="planTrip()">Plan My Trip</button>
+        </div>
+
+        <div id="trip-plan-section" class="hidden">
+            <h2>Your Trip Plan:</h2>
+            <div id="trip-plan-output">
+                </div>
+            <div id="error-message" class="error">
+                </div>
+        </div>
+    </div>
+
+    <script src="ai.js"></script>
+</body>
+</html>

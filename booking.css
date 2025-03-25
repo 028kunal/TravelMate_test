@@ -4,6 +4,7 @@ body {
   font-family: 'Segoe UI', sans-serif;
   background: #252424; /* Dark background */
   color: #ffffff;
+  margin-bottom: 100px;
 }
 
 .navbar {
@@ -205,13 +206,123 @@ button:hover {
   box-shadow: 0 0 12px #ffdf6c;
 }
 
+
 #map {
-  width: 50%;
+  width: 50%; /* Set width to half of the screen */
   height: 400px;
   margin-top: 20px;
+  /* margin-left: 100px;
+  margin-bottom: 40px; */
   border-radius: 10px 10px 0 0;
   box-shadow: 0 0 15px rgba(0, 255, 0, 0.5); /* Green glow */
   border: 2px solid #00ff00;
-  align-items: center;
-  text-align: center;
+  float: left; /* Align the map to the left */
 }
+
+
+
+#info-panel {
+  width: 50%; /* Take the right half of the screen */
+  float: right; /* Align it to the right side */
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-left: 2px solid #00ff00; /* Green border like the map */
+  background: #fff; /* White background */
+}
+
+#place-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+button {
+  background-color: #ff9800;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #e68900;
+}
+
+
+
+
+
+
+/* --- Flexbox Container for Map & Info Panel --- */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;  /* Ensures both elements stretch to same height */
+  gap: 20px;
+  padding: 20px;
+}
+
+/* --- Map Section --- */
+#map {
+  flex: 1;  /* Ensures both sections take equal width */
+  height: 400px;  /* Fixed height */
+  border-radius: 10px;
+  border: 3px solid #ffcc00; /* Yellow border matching theme */
+  box-shadow: 0px 4px 8px rgba(255, 204, 0, 0.5);
+}
+
+/* --- Info Panel Section --- */
+#info-panel {
+  flex: 1;  /* Makes it equal width as the map */
+  height: 364px;  /* Match the map height */
+  padding: 20px;
+  margin-top: 18px;
+  background: #222; /* Dark theme */
+  border-radius: 10px;
+  border: 3px solid #ffcc00;  /* Fixed green border issue */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
+  overflow-y: auto;  /* Scroll if content exceeds height */
+}
+
+/* --- Headings --- */
+#place-name {
+  font-size: 24px;
+  color: #ffcc00; /* Matching theme */
+  margin-bottom: 10px;
+}
+
+h3 {
+  color: #ffcc00;
+}
+
+/* --- Image Styling --- */
+#place-image {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0px 2px 6px rgba(255, 255, 255, 0.2);
+}
+
+/* --- Description Styling --- */
+#place-description {
+  font-size: 16px;
+  color: #bbb;
+  margin-top: 10px;
+}
+
+/* --- Nearby Places Section --- */
+#nearby-places {
+  list-style: none;
+  padding: 0;
+}
+
+#nearby-places li {
+  background: #333;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 5px;
+  color: #fff;
+}
+

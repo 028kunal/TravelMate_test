@@ -421,5 +421,78 @@ h2 {
     transform: scale(1.3);
 }
 
-  
 
+/* CHATBOT */
+
+
+/* Chatbot Icon */
+.bot {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    background-color: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+.bot:hover {
+    transform: scale(1.1);
+}
+
+.bot img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+
+/* Chat Window */
+.chat-container {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    width: 350px;
+    height: 500px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 1001;
+}
+
+/* Chat Header */
+.chat-header {
+    background-color: #37393a;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+}
+
+.chat-header button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Chat Frame */
+.chat-frame {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Hide Chat Initially */
+.hidden {
+    display: none;
+}

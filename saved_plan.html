@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saved Trip Plans</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* min-height: 100vh; */
+            
+
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
+            width: 90%;
+            text-align: left; 
+            overflow: hidden; /* Prevents horizontal scrolling */
+            word-wrap: break-word; /* Ensures text wraps properly */
+            overflow-wrap: break-word;
+            white-space: normal; /* Allows text to break onto the next line */
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #00ccff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .saved-plan-box-container {
+            margin-bottom: 15px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(8px);
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0px 4px 8px rgba(0, 255, 255, 0.2);
+        }
+
+        .saved-plan-box-container:hover {
+            background: rgba(0, 255, 255, 0.3);
+            box-shadow: 0px 0px 15px rgba(0, 255, 255, 0.7);
+            transform: scale(1.03);
+        }
+
+        .saved-plan-box-container h3 {
+            margin: 0;
+            font-size: 20px;
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        .saved-plan-box-container p {
+            margin: 5px 0 0;
+            font-size: 14px;
+            color: #b0b0b0;
+        }
+
+        #full-plan-view {
+            margin-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 20px;
+            line-height: 1.8; /* Proper spacing between lines */
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 8px;
+            display: none;
+            text-align: left;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            white-space: normal; /* Allows text to break correctly */
+            max-width: 100%; /* Prevents overflowing content */
+        }
+
+
+        #full-plan-view.visible {
+            display: block;
+        }
+
+        button {
+            background: linear-gradient(135deg, #00ccff, #ff00ff);
+            color: white;
+            padding: 12px 18px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.3s;
+            margin-top: 20px;
+            text-transform: uppercase;
+            font-weight: bold;
+            text-align: left;
+            margin-left: 1250px;
+            box-shadow: 0px 4px 10px rgba(255, 0, 255, 0.5);
+        }
+
+        button:hover {
+            background: linear-gradient(135deg, #ff00ff, #00ccff);
+            box-shadow: 0px 0px 20px rgba(0, 255, 255, 0.8);
+            transform: scale(1.2);
+        }
+
+
+
+    </style>
+    
+</head>
+<body class="">
+    <div class="container">
+        <h1>Saved Trip Plans</h1>
+        <div id="saved-plan-output">
+            </div>
+        <div id="full-plan-view">
+            <h2>Full Trip Plan:</h2>
+            <pre id="full-plan-text"></pre>
+        </div>
+        <button onclick="goBack()">Go Back</button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedPlanOutput = document.getElementById('saved-plan-output');
+            const savedPlansString = localStorage.getItem('savedTripPlans');
+            const fullPlanView = document.getElementById('full-plan-view');
+            const fullPlanText = document.getElementById('full-plan-text');
+
+            if (localStorage.getItem('theme') === 'dark') {
+                document.body.classList.add('dark-mode');
+                document.querySelector('.container').classList.add('dark-mode');
+            }
+
+            if (savedPlansString) {
+                const savedPlans = JSON.parse(savedPlansString);
+                if (savedPlans.length > 0) {
+                    savedPlans.forEach(plan => {
+                        const planContainer = document.createElement('div');
+                        planContainer.classList.add('saved-plan-box-container');
+                        const planContent = document.createElement('div');
+                        planContent.classList.add('saved-plan-content');
+                        planContent.innerHTML = `
+                            <h3>${plan.destination} (${plan.days} days)</h3>
+                            <p>Click to view full plan</p>
+                        `;
+                        planContainer.appendChild(planContent);
+                        planContainer.addEventListener('click', () => {
+                            fullPlanText.textContent = plan.plan;
+                            fullPlanView.classList.add('visible');
+                            fullPlanView.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        });
+                        savedPlanOutput.appendChild(planContainer);
+                    });
+                } else {
+                    savedPlanOutput.textContent = 'No trip plans saved yet.';
+                }
+            } else {
+                savedPlanOutput.textContent = 'No trip plans saved yet.';
+            }
+        });
+
+        function goBack() {
+            window.location.href = 'ai.html';
+        }
+    </script>
+</body>
+</html>

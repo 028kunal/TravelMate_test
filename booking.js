@@ -195,80 +195,6 @@ const categories = {
 
 
 
-// document.addEventListener("DOMContentLoaded", function () {
-//   var map = L.map('map').setView([20.5937, 78.9629], 5);
-
-//   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-//       attribution: '&copy; OpenStreetMap contributors'
-//   }).addTo(map);
-
-//   // Predefined coordinates for locations
-//   const locationCoordinates = {
-//       "Manali": [32.2396, 77.1887],
-//       "Shimla": [31.1048, 77.1734],
-//       "Ooty": [11.4064, 76.6932],
-//       "Varanasi": [25.3176, 82.9739],
-//       "Rishikesh": [30.0869, 78.2676],
-//       "Kedarnath": [30.7346, 79.0669],
-//       "Goa": [15.2993, 74.1240],
-//       "Kovalam": [8.4000, 76.9784],
-//       "Andaman": [11.7401, 92.6586],
-//       "Hampi": [15.3350, 76.4600],
-//       "Khajuraho": [24.8318, 79.9199],
-//       "Jaipur": [26.9124, 75.7873],
-//       "Spiti Valley": [32.2465, 78.0170],
-//       "Pawna Lake": [18.6500, 73.4723],
-//       "Roopkund": [30.2565, 79.7304],
-//       "Kedarkantha": [31.0244, 78.1958],
-//       "Hampta Pass": [32.2737, 77.3516],
-//       "Gulmarg": [34.0484, 74.3805],
-//       "Auli": [30.5285, 79.5656],
-//       "Sundarbans": [22.0176, 88.8263],
-//       "Jim Corbett": [29.5300, 78.7740],
-//       "Bandipur": [11.6542, 76.6476]
-//   };
-
-//   // Store markers in an array
-//   var markers = {};
-
-//   // Function to update map based on selected location
-//   function updateMap(location) {
-//       if (location && locationCoordinates[location]) {
-//           const coords = locationCoordinates[location];
-
-//           // Zoom in more when selecting a location
-//           map.setView(coords, 13);
-
-//           // Remove old marker if exists
-//           if (markers[location]) {
-//               map.removeLayer(markers[location]);
-//           }
-
-//           // Add new marker with more details
-//           const marker = L.marker(coords).addTo(map)
-//               .bindPopup(`<b>${location}</b><br>Coordinates: ${coords[0]}, ${coords[1]}`)
-//               .openPopup();
-          
-//           markers[location] = marker;
-//       }
-//   }
-
-//   // Event listener for location selection
-//   document.getElementById("location-select").addEventListener("change", function () {
-//       updateMap(this.value);
-//   });
-
-//   // Optional: Add markers for all locations at the start
-//   for (let place in locationCoordinates) {
-//       let coords = locationCoordinates[place];
-//       let marker = L.marker(coords).addTo(map)
-//           .bindPopup(`<b>${place}</b><br>Coordinates: ${coords[0]}, ${coords[1]}`);
-//       markers[place] = marker;
-//   }
-// });
-
-
-
 document.addEventListener("DOMContentLoaded", function () {
   // Initialize the map
   var map = L.map('map').setView([20.5937, 78.9629], 5);
@@ -388,3 +314,97 @@ document.addEventListener("DOMContentLoaded", function () {
       }
   ).addTo(map);
 });
+
+
+
+
+function updateInfoPanel(location) {
+  const placeData = {
+      "Manali": {
+          description: "A beautiful hill station in Himachal Pradesh, known for adventure sports and Rohtang Pass.",
+          image: "manali.jpg",
+          travel: "Nearest Airport: Kullu-Manali Airport. Nearest Railway Station: Joginder Nagar.",
+          weather: "10°C, Snowy"
+      },
+      "Goa": {
+          description: "Famous for its beaches, nightlife, and Portuguese heritage.",
+          image: "goa.jpg",
+          travel: "Nearest Airport: Goa International Airport. Nearest Railway Station: Madgaon.",
+          weather: "28°C, Sunny"
+      }
+  };
+
+  if (location in placeData) {
+      document.getElementById("place-name").innerText = location;
+      document.getElementById("place-description").innerText = placeData[location].description;
+      document.getElementById("place-image").src = placeData[location].image;
+      document.getElementById("travel-info").innerText = placeData[location].travel;
+      document.getElementById("weather-info").innerText = placeData[location].weather;
+  }
+}
+
+// Call this function inside your location change event
+document.getElementById("location-select").addEventListener("change", function () {
+  updateInfoPanel(this.value);
+});
+
+// MAP RIGHT SIDE
+
+
+// Fetch Wikipedia Image
+function fetchWikiImage(location) {
+  const url = `https://en.wikipedia.org/w/api.php?action=query&format=json&prop=pageimages&titles=${location}&pithumbsize=500&origin=*`;
+
+  fetch(url)
+    .then(response => response.json())
+    .then(data => {
+      const pages = data.query.pages;
+      const firstPage = Object.values(pages)[0];
+      if (firstPage.thumbnail) {
+        document.getElementById("place-image").src = firstPage.thumbnail.source;
+      } else {
+        document.getElementById("place-image").src = "default.jpg"; // Fallback image
+      }
+    })
+    .catch(error => console.error("Error fetching Wiki image:", error));
+}
+
+// Fetch Wikipedia Description
+function fetchWikiDescription(location) {
+  const url = `https://en.wikipedia.org/api/rest_v1/page/summary/${location}`;
+
+  fetch(url)
+    .then(response => response.json())
+    .then(data => {
+      if (data.extract) {
+        document.getElementById("place-description").innerText = data.extract;
+      } else {
+        document.getElementById("place-description").innerText = "No description available.";
+      }
+    })
+    .catch(error => console.error("Error fetching Wiki description:", error));
+}
+
+// Update Information Panel
+function updateInfoPanel(location, lat, lon) {
+  document.getElementById("place-name").innerText = location;
+  fetchWikiImage(location);
+  fetchWikiDescription(location);
+}
+
+
+
+// Assuming markers are stored in an array
+let locations = [
+  { name: "Ooty", lat: 11.4102, lon: 76.6950 },
+  { name: "Goa", lat: 15.2993, lon: 74.1240 },
+  { name: "Shimla", lat: 31.1048, lon: 77.1734 }
+];
+
+locations.forEach(place => {
+  let marker = L.marker([place.lat, place.lon]).addTo(map);
+  marker.on("click", function (e) {
+    updateInfoPanel(place.name, place.lat, place.lon);
+  });
+});
+

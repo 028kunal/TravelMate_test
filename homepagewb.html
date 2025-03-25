@@ -53,6 +53,10 @@
             </div>
 
             <div class="booking box">
+                <a href="ai.html" target="_main"><h4>AI Planner</h4></a>
+            </div>
+
+            <div class="booking box">
                 <a href="booking.html" target="_self"><h4>Booking</h4></a>
             </div>
 
@@ -269,7 +273,26 @@
         </div>
     </div>
     
+    <!-- CHATBOT -->
+
+    <!-- <div class="bot">
+        <img src="bot.webp" alt="Chatbot">
+    </div> -->
     
+    <div class="bot" id="chatbot-icon">
+        <img src="bot.jpg" alt="Chatbot">
+    </div>
+    
+    <div class="chat-container hidden" id="chat-window">
+        <div class="chat-header">
+            <span>Chatbot</span>
+            <button id="close-chat">✖</button>
+        </div>
+        <iframe src="bot.html" class="chat-frame"></iframe>
+    </div>    
+
+
+
     <footer class="footer" id="about">
         
         <div class="footer-container">
@@ -365,6 +388,6 @@
 
     </footer>
     
-      
+    <script src="home.js"></script>
 </body>
 </html>

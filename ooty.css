@@ -550,6 +550,7 @@ body {
     text-align: center;
     margin-bottom: 0px;
     background-size: cover;
+    margin-top: 200px;
     
 }
 
@@ -645,4 +646,92 @@ h2 {
 
 .social-icons img:hover {
     transform: scale(1.3);
+}
+
+
+
+
+
+
+/* Weather Container */
+.weather-container {
+    text-align: center;
+    padding: 20px;
+    width: 350px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease-in-out;
+}
+
+/* Search Box */
+.search-box {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+input {
+    width: 70%;
+    padding: 10px;
+    border: none;
+    border-radius: 25px;
+    outline: none;
+    font-size: 16px;
+    text-align: center;
+}
+
+button {
+    background: #ffcc00;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s ease;
+}
+
+button:hover {
+    background: #ffaa00;
+    transform: scale(1.1);
+}
+
+/* Weather Card */
+.weather-info {
+    display: none;
+    padding: 20px;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Weather Icon */
+.weather-icon {
+    width: 80px;
+    height: 80px;
+    margin-top: 10px;
+    animation: bounce 1.5s infinite ease-in-out;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
 }

@@ -1,4 +1,4 @@
-/* LOGIN CSS*/
+/* LOGIN CSS - DARK MODE ENHANCED */
 
 body {
     font-family: Arial, sans-serif;
@@ -7,55 +7,71 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background: linear-gradient(135deg, #c850c0, #4158d0,#e3656f);
+    background: linear-gradient(135deg, #1e1e2f, #000000, #1a1a2e);
     background-size: 300% 300%;
-    animation: gradientAnimation 4s infinite alternate ease-in-out;
+    animation: gradientAnimation 5s infinite alternate ease-in-out;
 }
 
+/* Background Animation */
 @keyframes gradientAnimation {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
-  }
-
-.container {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    width: 25%;
-    height: 45%;
 }
 
+/* Container - Glassmorphism Effect */
+.container {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    width: 28%;
+    height: 50%;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+}
+
+/* Headings */
 h2 {
     margin-bottom: 20px;
-    color: #2f2d2d;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
 
+/* Labels */
 label {
     display: block;
-    font-size: 20px;
+    font-size: 18px;
     margin: 10px 0 3px 10px;
     text-align: left;
-    color: #2f2d2d;
+    color: #ffffff;
 }
 
+/* Input Fields */
 input {
-    width: 80%;
-    display: flex;
-    flex-wrap: wrap;
-    padding: 3px;
-    margin-top: 2px;
-    margin-left: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    width: 85%;
+    padding: 8px;
+    margin: 5px 10px 15px 10px;
     border: none;
     outline: none;
-    border-bottom: 2px solid black;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    font-size: 16px;
+    border-bottom: 2px solid #3ba5cf;
+    transition: 0.3s ease-in-out;
 }
 
+/* Input Glow Effect on Focus */
+input:focus {
+    border-bottom: 2px solid #00ffcc;
+    box-shadow: 0px 0px 10px #00ffcc;
+}
+
+/* Password Field */
 .password-container {
     display: flex;
     align-items: center;
@@ -66,42 +82,63 @@ input {
     flex: 1;
 }
 
+/* Password Button */
 .password-container button {
-    background-color: #2f2d2d;
+    background-color: #3ba5cf;
     border: none;
     color: white;
     padding: 8px;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
     margin-left: 5px;
-    height: 40px;
+    height: 42px;
+    transition: 0.3s ease-in-out;
 }
 
-.link{
+.password-container button:hover {
+    background-color: #00ffcc;
+    box-shadow: 0px 0px 10px #00ffcc;
+}
+
+/* Forgot Password / Link */
+.link {
     margin-top: 10px;
-    font-size: 20px;
-}
-
-button[type="submit"] {
-    background-color: #2f2d2d;
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
+    font-size: 18px;
+    color: #00ffcc;
+    transition: 0.3s ease-in-out;
     cursor: pointer;
-    font-size: 16px;
-    width: 50%;
-    margin-top: 30px;
-    height: 40px;
 }
 
-button:hover{
-    background: linear-gradient(135deg, #c850c0, #4158d0,#3ba5cf);
-    background-size: 300% 300%;
-    animation: gradientAnimation 4s infinite alternate ease-in-out;
+.link:hover {
+    text-decoration: underline;
+    color: #ffffff;
 }
-button{
-    background: linear-gradient(135deg,rgb(59, 58, 58),rgb(203, 200, 200),rgb(93, 92, 92));
+
+/* Submit Button */
+button[type="submit"] {
+    background: linear-gradient(135deg, #00ffcc, #3ba5cf);
+    color: black;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    width: 60%;
+    margin-top: 25px;
+    height: 45px;
+    font-weight: bold;
+    transition: 0.3s ease-in-out;
+}
+
+/* Submit Button Hover Effect */
+button[type="submit"]:hover {
+    background: linear-gradient(135deg, #3ba5cf, #00ffcc);
+    box-shadow: 0px 0px 15px #00ffcc;
+}
+
+/* Button General Styles */
+button {
+    background: linear-gradient(135deg, #222222, #444444);
     background-size: 300% 300%;
-    animation: gradientAnimation 4s infinite alternate ease-in-out;
+    animation: gradientAnimation 5s infinite alternate ease-in-out;
 }

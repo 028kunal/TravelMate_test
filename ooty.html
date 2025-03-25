@@ -402,68 +402,24 @@
 
         <!-- WEATHER SCALE  -->
 
-        <div class="weather-section">
 
-            <script>
-                function updateWeather() {
-                    const monthSlider = document.getElementById("monthSlider");
-                    const weatherDisplay = document.getElementById("weatherDisplay");
-                    const monthLabel = document.getElementById("month");
-                    const tempLabel = document.getElementById("temperature");
-            
-                    const weatherData = {
-                        1: { month: "January", temp: "Average High: 66°F", image: "winter.jpg" },
-                        2: { month: "February", temp: "Average High: 70°F", image: "winter.jpg" },
-                        3: { month: "March", temp: "Average High: 73°F", image: "spring.jpg" },
-                        4: { month: "April", temp: "Average High: 75°F", image: "summer.jpg" },
-                        5: { month: "May", temp: "Average High: 73°F", image: "summer.jpg" },
-                        6: { month: "June", temp: "Average High: 66°F", image: "monsoon.jpg" },
-                        7: { month: "July", temp: "Average High: 64°F", image: "monsoon.jpg" },
-                        8: { month: "August", temp: "Average High: 65°F", image: "monsoon.jpg" },
-                        9: { month: "September", temp: "Average High: 66°F", image: "monsoon.jpg" },
-                        10: { month: "October", temp: "Average High: 69°F", image: "autumn.jpg" },
-                        11: { month: "November", temp: "Average High: 68°F", image: "autumn.jpg" },
-                        12: { month: "December", temp: "Average High: 64°F", image: "winter.jpg" }
-                    };
-            
-                    const currentMonth = weatherData[monthSlider.value];
-                    monthLabel.textContent = currentMonth.month;
-                    tempLabel.textContent = currentMonth.temp;
-                    weatherDisplay.style.backgroundImage = `url('${currentMonth.image}')`;
-                }
-            
-                window.onload = updateWeather;
-            </script>
-            
+        <div class="weather-container">
+            <div class="search-box">
+                <input type="text" id="cityInput" placeholder="Enter city name">
+                <button onclick="getWeather()">Search</button>
 
-
-            <h2>Ooty Weather Scale</h2>
-            <div class="weather-display" id="weatherDisplay">
-                <div class="weather-info">
-                    <h3 id="month">March</h3>
-                    <p id="temperature">Average High: 73°F</p>
-                </div>
             </div>
-            <input type="range" id="monthSlider" min="1" max="12" value="3" oninput="updateWeather()">
-            <div class="month-labels">
-                <span>Jan</span>
-                <span>Feb</span>
-                <span>Mar</span>
-                <span>Apr</span>
-                <span>May</span>
-                <span>Jun</span>
-                <span>Jul</span>
-                <span>Aug</span>
-                <span>Sep</span>
-                <span>Oct</span>
-                <span>Nov</span>
-                <span>Dec</span>
+            <div class="weather-info">
+                <h2 id="cityName">City Name</h2>
+                <p id="temperature">Temperature: --°C</p>
+                <p id="weatherDesc">Weather: --</p>
+                <p id="humidity">Humidity: --%</p>
+                <img id="weatherIcon" src="" alt="Weather Icon">
             </div>
         </div>
 
-        <div class="container">
-            <a class="btn" href="homepage.html">Back</a>
-        </div>
+
+
 
         
     
@@ -566,5 +522,6 @@
 
     </div>
     
+    <script src ="ooty.js"></script>
 </body>
 </html>
