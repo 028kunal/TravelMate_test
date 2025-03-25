@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Bookings</title>
+  <link rel="stylesheet" href="mybookings.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <h1>My Bookings</h1>
+    <a href="booking.html" class="back-btn">Back to Booking</a>
+  </nav>
+
+  <div class="filters">
+    <select id="filter-type">
+      <option value="destination">Destination</option>
+      <option value="departureDate">Departure Date</option>
+    </select>
+    <input type="text" id="filter-text" placeholder="Enter filter value..." />
+    <input type="date" id="filter-date" style="display:none;" />
+    <button id="clear-filters">Clear Filters</button>
+  </div>
+
+  <div id="bookings-list" class="bookings-container"></div>
+
+  <script src="mybookings.js"></script>
+</body>
+</html>

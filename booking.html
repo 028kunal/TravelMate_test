@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Booking Page</title>
+  <link rel="stylesheet" href="booking.css" />
+</head>
+<body>
+  <header class="navbar">
+    <img src="/images/travelmate.jpg" alt="Logo" class="logo" />
+    <h1>Book Your Adventure</h1>
+    <a href="homepagewb.html" class="back-home">← Back to Home</a>
+  </header>
+
+  <main class="booking-container">
+    <!-- Category Dropdown -->
+    <section class="form-section">
+      <label for="category-select">Filter by Category:</label>
+      <select id="category-select">
+        <option value="">-- Select Category --</option>
+        <option value="hill">Hill Station</option>
+        <option value="pilgrimage">Pilgrimage</option>
+        <option value="beach">Beach</option>
+        <option value="historical">Historical</option>
+        <option value="camping">Camping</option>
+        <option value="trekking">Trekking</option>
+        <option value="snow">Snow</option>
+        <option value="forest">Forest</option>
+      </select>
+    </section>
+
+    <!-- Location Dropdown -->
+    <section class="form-section">
+      <label for="location-select">Choose your destination:</label>
+      <select id="location-select">
+        <option value="">-- Select a Location --</option>
+      </select>
+    </section>
+
+    <!-- Date Selection -->
+    <section class="form-section">
+      <label for="departure-date">Date of Departure:</label>
+      <input type="date" id="departure-date" min="" />
+    </section>
+
+    <!-- Budget Filter -->
+    <section class="form-section">
+      <label for="budget">Select Max Budget ($):</label>
+      <input type="range" id="budget" min="100" max="2000" value="1000"/>
+      <span id="budget-value">$1000</span>
+    </section>
+
+    <!-- Airline Cards -->
+    <section class="airline-options">
+      <h2>Select an Airline</h2>
+      <div class="airline-gallery" id="airline-gallery">
+        <!-- Cards dynamically loaded -->
+      </div>
+    </section>
+
+    <!-- Book Now -->
+    <button id="book-btn">Book Now</button>
+    <button id="view-bookings">See My Bookings</button>
+
+    <!-- Confirmation Modal -->
+    <div id="confirmation-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-btn" id="close-modal">&times;</span>
+        <p id="confirmation-message"></p>
+      </div>
+    </div>
+  </main>
+
+  <script src="booking.js"></script>
+</body>
+</html>
