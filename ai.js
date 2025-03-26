@@ -20,6 +20,14 @@ darkModeToggle.addEventListener('click', () => {
         darkModeToggle.textContent = 'Light Mode';
         localStorage.setItem('theme', 'dark');
     } else {
+
+
+
+
+
+
+
+        
         darkModeToggle.textContent = 'Dark Mode';
         localStorage.setItem('theme', 'light');
     }
