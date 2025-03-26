@@ -663,59 +663,103 @@ h2 {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(10px);
     transition: all 0.3s ease-in-out;
+    align-items: center;
 }
 
 /* Search Box */
+
+.weather-container {
+    text-align: center;
+    padding: 25px;
+    width: 400px;
+    margin-left: 35%;
+    
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(15px);
+    transition: 0.3s ease-in-out;
+}
+
+h1 {
+    color: #000000;
+    font-weight: 600;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
 .search-box {
     display: flex;
     justify-content: center;
+    gap: 10px;
     margin-bottom: 20px;
 }
 
 input {
-    width: 70%;
-    padding: 10px;
+    width: 65%;
+    padding: 12px;
     border: none;
     border-radius: 25px;
     outline: none;
     font-size: 16px;
     text-align: center;
-}
-
-button {
-    background: #ffcc00;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 25px;
-    cursor: pointer;
-    font-weight: bold;
+    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.2);
     transition: 0.3s ease;
 }
 
-button:hover {
-    background: #ffaa00;
-    transform: scale(1.1);
+input:focus {
+    transform: scale(1.05);
 }
 
-/* Weather Card */
+button {
+    background: linear-gradient(45deg, #ffcc00, #ff8800);
+    border: none;
+    padding: 12px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    color: white;
+    transition: 0.3s ease-in-out;
+    box-shadow: 0 4px 10px rgba(255, 136, 0, 0.5);
+}
+
+button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 15px rgba(255, 136, 0, 0.7);
+}
+
 .weather-info {
     display: none;
+    opacity: 0;
+    transform: translateY(20px);
     padding: 20px;
     border-radius: 15px;
     background: rgba(255, 255, 255, 0.3);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    animation: fadeIn 1s ease-in-out;
+    transition: 0.5s ease-in-out;
 }
 
-/* Weather Icon */
-.weather-icon {
+.weather-info.show {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#weatherIcon {
     width: 80px;
     height: 80px;
     margin-top: 10px;
     animation: bounce 1.5s infinite ease-in-out;
 }
 
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+
 /* Animations */
+
 @keyframes fadeIn {
     from {
         opacity: 0;

@@ -13,10 +13,10 @@ const categories = {
   
   const airlines = {
     domestic: [
-      { name: "IndiGo", image: "indigo.jpg", basePrice: 400 },
-      { name: "Air India", image: "airindia.jpg", basePrice: 450 },
-      { name: "Vistara", image: "vistara.jpg", basePrice: 500 },
-      { name: "SpiceJet", image: "spicejet.jpg", basePrice: 380 },
+      { name: "IndiGo", image: "indigo.avif", basePrice: 400 },
+      { name: "Air India", image: "air_india.jpeg", basePrice: 450 },
+      { name: "Vistara", image: "vistara.webp", basePrice: 500 },
+      { name: "SpiceJet", image: "spice_jet.jpeg", basePrice: 380 },
     ],
     international: [
       { name: "Qatar Airways", image: "qatar.jpg", basePrice: 800 },
