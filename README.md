@@ -72,33 +72,10 @@ TravelMate simplifies travel planning by allowing users to:
 🚩 **AI Personalization:** Advanced ML models to recommend trips based on previous travel patterns.  
 🚩 **Mobile App:** Extend functionality to a cross-platform mobile application.
 
----
-
-## 🖥️ Screenshots
-
-![Home Page](https://via.placeholder.com/800x400?text=Home+Page+Screenshot)
-
-![Booking Page](https://via.placeholder.com/800x400?text=Booking+Page+Screenshot)
-
-![Chatbot Assistance](https://via.placeholder.com/800x400?text=Chatbot+Assistance+Screenshot)
-
----
-
-## 🤝 Contributing
-
-Contributions, suggestions, and feature requests are welcome! Please open an issue or submit a pull request for improvements.
-
----
-
-## 📜 License
-
-This project is licensed under the **MIT License**.
 
 ---
 
 ## 📫 Contact
-
-For queries, collaborations, or suggestions:
 
 - **Kunal Jain**
 - Email: [kunalpjain02@gmail.com](mailto:kunalpjain02@gmail.com)
