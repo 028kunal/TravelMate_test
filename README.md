@@ -1,6 +1,5 @@
 # TravelMate – Smart Travel Planner & Booking Platform
 
-![TravelMate Banner](https://via.placeholder.com/1200x300?text=TravelMate+%7C+Smart+Travel+Planner+%26+Booking+Platform)
 
 ## 🌍 Overview
 
